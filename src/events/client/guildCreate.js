@@ -63,32 +63,36 @@ module.exports = async (client, guild) => {
                     .setStyle(Discord.ButtonStyle.Link),
             );
 
-        client.embed({
+        client.embed(
+          {
             title: "Thanks for inviting the bot!",
             image: "https://cdn.discordapp.com/attachments/843487478881976381/874694194474668052/bot_banner_invite.jpg",
-            fields: [{
+            fields: [
+              {
                 name: "❓┆How to setup?",
-                value: 'The default prefix = \`/\` \nTo run setups with Bot run \`/setup\`',
+                value: "The default prefix = `/` \nTo run setups with Bot run `/setup`",
                 inline: false,
-            },
-            {
+              },
+              {
                 name: "☎️┆I need help what now?",
-                value: `You can DM <@755297485328482356> for support or joining the [[Support server]](${client.config.discord.serverInvite})`,
+                value: `You can DM <@!468643292490366976> for support or joining the [[Support server]](${client.config.discord.serverInvite})`,
                 inline: false,
-            },
-            {
+              },
+              {
                 name: "💻┆What are the commands?",
-                value: 'See that list of commands by doing \`/help\`',
+                value: "See that list of commands by doing `/help`",
                 inline: false,
-            },
-            {
+              },
+              {
                 name: "📨┆Invite the bot!",
                 value: `Invite the bot to click [[HERE]](${client.config.discord.botInvite})`,
                 inline: false,
-            },
+              },
             ],
-            components: [row], 
-        }, defaultChannel)
+            components: [row],
+          },
+          defaultChannel
+        );
     }
     catch (err) {
         console.log(err);
