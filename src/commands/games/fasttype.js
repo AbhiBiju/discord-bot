@@ -63,6 +63,11 @@ module.exports = async (client, interaction, args) => {
         var i;
         for (i = 0; i < 25; i++) {
             const time = Date.now();
+            if (i === 25) {
+                client.succNormal({ text: `You did it!`, type: 'editreply' }, interaction)
+                inGame.delete(interaction.user.id)
+                break;
+            }
 
             list = list.split("\n");
             let sentenceList = list[Math.floor(Math.random() * list.length)];
@@ -79,7 +84,7 @@ module.exports = async (client, interaction, args) => {
                 desc: `Type the below in ${ms(timeLength, { long: true })}! \n${sentence}`,
                 type: 'editreply'
             }, interaction)
-
+ 
             try {
                 var msg = await interaction.channel.awaitMessages({
                     filter,
@@ -118,12 +123,6 @@ module.exports = async (client, interaction, args) => {
                 }, interaction)
                 inGame.delete(interaction.user.id)
                 break;
-            }
-
-            if (i === 25) {
-                client.succNormal({ text: `You did it!`, type: 'editreply' }, interaction)
-                inGame.delete(interaction.user.id)
-                break
             }
         }
     }
